@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page avec Sidebar Bootstrap</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 sidebar">
+                <div class="sidebar-content">
+                    <h2>Formulaire</h2>
+                    <form id="mainForm">
+                        <div class="form-group">
+                            <label for="metier">Métier :</label>
+                            <input type="text" class="form-control" id="metier" placeholder="Entrez votre métier">
+                        </div>
+                        <div class="form-group">
+                            <label>Niveau :</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="niveau" value="junior" id="juniorRadio">
+                                <label class="form-check-label" for="juniorRadio">
+                                    Junior
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="niveau" value="intermediaire" id="intermediaireRadio">
+                                <label class="form-check-label" for="intermediaireRadio">
+                                    Intermédiaire
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="niveau" value="senior" id="seniorRadio">
+                                <label class="form-check-label" for="seniorRadio">
+                                    Senior
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="niveau" value="expert" id="expertRadio">
+                                <label class="form-check-label" for="expertRadio">
+                                    Expert
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Expérience :</label>
+                            <div id="experiences">
+                                <div class="experience">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="Libellé expérience">
+                                        <input type="text" class="form-control datepicker" placeholder="Date de début">
+                                        <input type="text" class="form-control datepicker" placeholder="Date de fin">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary add-experience" type="button">+</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                    </form>
+                </div>
+                <div class="sidebar-footer">
+                    <button class="btn btn-secondary" disabled>Télécharger en PDF</button>
+                    <button class="btn btn-secondary" disabled>Télécharger en .docx</button>
+                </div>
+            </div>
+            <!-- Contenu principal -->
+            <div class="col-md-9 content">
+                <h2>Résultat</h2>
+                <div id="result"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../js/app.js"></script>
+</body>
+</html>
