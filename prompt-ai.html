@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV - Jean Dupont</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .profile {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .profile img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    h2 {
+      margin-top: 20px;
+    }
+    .section {
+      margin-bottom: 20px;
+    }
+    .section h2 {
+      margin-bottom: 10px;
+    }
+    .section ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .section ul li {
+      margin-bottom: 10px;
+    }
+    .button {
+      display: block;
+      width: 200px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      text-align: center;
+    }
+    .button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="profile">
+    <img src="your-photo.jpg" alt="Jean Dupont">
+    <h1>Jean Dupont</h1>
+    <p>Ingénieur DevOps</p>
+  </div>
+  
+  <div class="section">
+    <h2>Informations personnelles</h2>
+    <p>Nom complet: Jean Dupont</p>
+    <p>Adresse postale: 123 Rue des Ingénieurs, 75000 Paris, France</p>
+    <p>Numéro de téléphone: +33 6 12 34 56 78</p>
+    <p>Adresse e-mail: jean.dupont@example.com</p>
+    <p>LinkedIn: <a href="linkedin.com/in/jean-dupont" target="_blank">linkedin.com/in/jean-dupont</a></p>
+  </div>
+  
+  <div class="section">
+    <h2>Objectif professionnel</h2>
+    <p>Je suis à la recherche d'opportunités professionnelles en tant qu'Ingénieur DevOps où je pourrais mettre à profit mes compétences techniques et ma passion pour l'automatisation des processus pour contribuer à la croissance et au succès d'une entreprise innovante.</p>
+  </div>
+  
+  <div class="section">
+    <h2>Formation académique</h2>
+    <ul>
+      <li>Master en Ingénierie des Systèmes Informatiques, École Nationale Supérieure d'Informatique (ENSI), Paris, France, 2015-2017</li>
+      <li>Licence en Sciences Informatiques, Université Pierre et Marie Curie, Paris, France, 2012-2015</li>
+    </ul>
+  </div>
+  
+  <div class="section">
+    <h2>Expérience professionnelle</h2>
+    <ul>
+      <li><strong>Ingénieur DevOps</strong> chez TechSolutions, Paris, France, 2018-présent</li>
+      <li>Conception, mise en place et maintenance de pipelines CI/CD pour l'automatisation des déploiements.</li>
+      <li>Gestion des infrastructures cloud sur AWS, Azure et Google Cloud Platform.</li>
+      <li>Collaboration avec les équipes de développement pour optimiser les performances des applications.</li>
+    </ul>
+    <ul>
+      <li><strong>Développeur Logiciel</strong> chez SoftDev, Paris, France, 2017-2018</li>
+      <li>Développement et maintenance d'outils internes pour le déploiement automatisé.</li>
+      <li>Participation à la mise en place de pratiques DevOps au sein de l'équipe de développement.</li>
+    </ul>
+  </div>
+  
+  <div class="section">
+    <h2>Compétences</h2>
+    <ul>
+      <li>Maîtrise des outils de gestion de versions tels que Git et SVN</li>
+      <li>Expertise dans l'automatisation des déploiements avec Jenkins, Ansible et Docker</li>
+      <li>Connaissance approfondie des environnements cloud (AWS, Azure, GCP)</li>
+      <li>Compétences en scripting avec Python, Shell, et PowerShell</li>
+      <li>Excellentes compétences en communication et en travail d'équipe</li>
+      <li>Bilingue français/anglais</li>
+    </ul>
+  </div>
+  
+  <div class="section">
+    <h2>Réalisations et distinctions</h2>
+    <ul>
+      <li>Membre de l'équipe ayant mis en place une stratégie DevOps réussie, ayant conduit à une réduction de 30% du temps de déploiement des applications chez TechSolutions.</li>
+      <li>Lauréat du prix du Meilleur Projet Informatique lors de mon cursus universitaire.</li>
+    </ul>
+  </div>
+  
+  <div class="section">
+    <h2>Centres d'intérêt</h2>
+    <ul>
+      <li>Participation à des hackathons et à des meetups sur les technologies DevOps.</li>
+      <li>Bénévolat dans des initiatives locales de formation à la programmation.</li>
+      <li>Pratique de la musique et du tennis.</li>
+    </ul>
+  </div>
+  
+  <div class="section" style="text-align: center;">
+    <p class="button"><a href="#" onclick="downloadPDF()">Télécharger CV au format PDF</a></p>
+  </div>
+</div>
+
+<script>
+  function downloadPDF() {
+    var pdf = new jsPDF();
+    pdf.text(20, 20, 'CV - Jean Dupont');
+    pdf.fromHTML(document.querySelector('.container'), 20, 30);
+    pdf.save('cv_jean_dupont.pdf');
+  }
+</script>
+
+</body>
+</html>
