@@ -1,0 +1,65 @@
+{
+  "Profil": {
+    "Titre": "DevOps - Junior",
+    "Informations_personnelles": {
+      "Nom_complet": "Jean Dupont",
+      "Adresse_postale": "123 Rue de la République, 75001 Paris",
+      "Numéro_de_téléphone": "+33 6 12 34 56 78",
+      "Adresse_email": "jeandupont@example.com",
+      "Réseaux_sociaux": {
+        "LinkedIn": "https://www.linkedin.com/in/jeandupont",
+        "GitHub": "https://github.com/jeandupont"
+      }
+    },
+    "Objectif_professionnel": "Passionné par les technologies DevOps, je recherche une opportunité professionnelle qui me permettra de mettre en pratique mes compétences et d'acquérir de nouvelles connaissances dans un environnement dynamique."
+  },
+  "Experience_professionnelle": [
+    {
+      "Entreprise": "Tech Solutions Ltd.",
+      "Poste": "Stagiaire DevOps",
+      "Dates": "2020-07-01 - 2020-09-01",
+      "Description": "Assistance à la mise en place de pipelines CI/CD, gestion des configurations avec Ansible, surveillance et maintenance des infrastructures cloud."
+    },
+    {
+      "Entreprise": "WebTech Inc.",
+      "Poste": "Développeur Junior",
+      "Dates": "2020-10-01 - Présent",
+      "Description": "Collaboration à la mise en place de l'automatisation des déploiements, gestion des containers Docker, résolution des incidents liés à l'infrastructure."
+    }
+  ],
+  "Competences": {
+    "Techniques": {
+      "Déploiement": ["Docker", "Kubernetes"],
+      "Automatisation": ["Ansible", "Jenkins"],
+      "Gestion_de_version": ["Git"]
+    },
+    "Communication": ["Esprit d'équipe", "Communication claire et efficace"],
+    "Langues_étrangères": [
+      {"Langue": "Anglais", "Niveau": "Intermédiaire"}
+    ]
+  },
+  "Formation": [
+    {
+      "Diplôme": "Baccalauréat en Informatique",
+      "Établissement": "Université de Paris",
+      "Dates": "2017-09-01 - 2020-06-01",
+      "Spécialisation": "Systèmes et Réseaux"
+    }
+  ],
+  "Outils": [
+    "Docker",
+    "Kubernetes",
+    "Ansible",
+    "Git",
+    "Jenkins"
+  ],
+  "Certifications": [
+    "Certification Docker Associate"
+  ],
+  "Projets_personnels": [],
+  "Loisirs_et_autres": [
+    "Participation à des meetups DevOps",
+    "Lecture d'articles techniques",
+    "Pratique de la course à pied"
+  ]
+}
