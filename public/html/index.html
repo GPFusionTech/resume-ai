@@ -17,6 +17,37 @@
                     <h2>Formulaire</h2>
                     <form id="mainForm">
                         <div class="form-group">
+                            <label >Informations personnelles :</label>
+                            <div class="form-group mb-3">
+                                <input type="text" class="form-control" id="nom" placeholder="Entrez votre nom" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <input type="text" class="form-control" id="prenom" placeholder="Prénoms" required>
+                            </div>    
+                            
+                            <div class="form-group mb-3">
+                                <label for="adresse">Adresse :</label>
+                                <input type="text" class="form-control" id="adresse" placeholder="Entrez votre adresse" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-8">
+                                    <input type="text" class="form-control" id="email" placeholder="Entrez votre email" required>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <input type="text" class="form-control" id="telephone" placeholder="telephone" required>
+                                </div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="liens vers vos profils réseaux https://">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary add-experience" type="button">+</button>
+                                </div>
+                            </div>
+                            
+
+                        </div>
+                        <div class="form-group">
                             <label for="metier">Métier :</label>
                             <input type="text" class="form-control" id="metier" placeholder="Entrez votre métier">
                         </div>
@@ -52,17 +83,21 @@
                             <div id="experiences">
                                 <div class="experience">
                                     <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder="Libellé expérience">
-                                        <input type="text" class="form-control datepicker" placeholder="Date de début">
-                                        <input type="text" class="form-control datepicker" placeholder="Date de fin">
-                                        <div class="input-group-append">
+                                        <div class="input-group-prepend">
                                             <button class="btn btn-outline-secondary add-experience" type="button">+</button>
                                         </div>
+                                        <textarea type="text" class="form-control" placeholder="Libellé expérience"></textarea>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control datepicker" placeholder="Date de début">
+                                            <input type="text" class="form-control datepicker" placeholder="Date de fin">
+                                        </div>
+                                        
+                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                        <button type="submit" class="btn btn-primary">Generer le CV</button>
                     </form>
                 </div>
                 <div class="sidebar-footer">
