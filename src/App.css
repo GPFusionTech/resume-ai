@@ -1,0 +1,28 @@
+
+.sidebar {
+  background-color: #e9ecef;
+  padding: 20px;
+  height: 100vh;
+}
+
+.sidebar-content {
+  margin-bottom: 20px;
+}
+
+.sidebar-footer {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+}
+
+.sidebar-footer button {
+  margin-right: 10px;
+}
+
+.content {
+  padding: 20px;
+}
+
+.experience {
+  margin-bottom: 10px;
+}
