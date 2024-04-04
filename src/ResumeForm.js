@@ -1,39 +1,84 @@
-import React from 'react';
-import { useState } from "react";
-import AddProfileLink from './AddLinkFields';
+import React, { useState } from 'react';
+import AddProfileLink from './AddProfileLink';
 
-class ResumeForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            niveau: junior
-        };
+export default function AddResumeForm() {
+    const [profileLinks, setProfileLinks] = useState([{profileLink: ""}]);
+    const [inputs, setInputs] = useState({
+        name: "",
+        prenom: "",
+        adresse: "",
+        email: "",
+        telephone: "",
+        metier: "",
+        niveau: "",
+        profileLinks: [] // Pour stocker les liens de profil dynamiquement ajoutés
+    });
 
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setInputs(prevInputs => ({
+            ...prevInputs,
+            [name]: value
+        }));
+    }
+
+    const handleProfileLinksChange = (updatedProfileLinks) => {
+        setProfileLinks(updatedProfileLinks);
     };
 
-   
+   /* const handleLinkChange = (index, value) => {
+        const updatedLinks = [...inputs.profileLink];
+        updatedLinks[index] = value;
+        setInputs(prevInputs => ({
+            ...prevInputs,
+            profileLink: updatedLinks
+        }));
+    };*/
 
-    render() {
-        return (
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        inputs.profileLinks = profileLinks;
+        console.log(JSON.stringify(inputs));
+       
+    };
+    
+    return (
             <form on onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label>Informations personnelles :</label>
                     <div classNameName="form-group mb-3">
-                        <input type="text" className="form-control" id="nom" placeholder="Entrez votre nom" required />
+                        <input
+                            type="text"
+                            name="name"
+                            className="form-control"
+                            id="nom"
+                            placeholder="Entrez votre nom"
+                            onChange={handleChange}
+                            required
+                        />
                     </div>
                     <div className="form-group mb-3">
-                        <input type="text" className="form-control" id="prenom" placeholder="Prénoms" required />
+                        <input
+                            type="text"
+                            name="prenom"
+                            className="form-control"
+                            id="prenom"
+                            placeholder="Prénoms"
+                            onChange={handleChange}
+                            required 
+                        />
                     </div> 
                     <div className="form-group mb-3">
-                        <label>
-                        Adresse:
+                        <label>Adresse:</label>  
                         <input 
                             type="text"
+                            name="adresse"
                             className="form-control"
                             id="adresse"
                             placeholder="Entrez votre adresse"
-                            required />
-                        </label>    
+                            onChange={handleChange}
+                            required
+                        />
                     </div>
                     <div className="form-row mb-3">
                         <div className="form-group col-md-7">
@@ -41,7 +86,9 @@ class ResumeForm extends React.Component {
                                 type="text"
                                 className="form-control"
                                 id="email"
+                                name="email"
                                 placeholder="Entrez votre email"
+                                onChange={handleChange}
                                 required
                             />
                         </div>
@@ -50,13 +97,18 @@ class ResumeForm extends React.Component {
                                 type="text"
                                 className="form-control"
                                 id="telephone"
+                                name='telephone'
                                 placeholder="telephone"
+                                onChange={handleChange}
                                 required
                             />
                         </div>
                     </div>
                     <div id="profile-link" className="form-group mb-3">
-                            <AddProfileLink />
+                        <AddProfileLink 
+                            profileLinks={profileLinks}
+                            onChange={handleProfileLinksChange}
+                        />
                     </div>
                 </div>
                 <div className="form-group">
@@ -65,7 +117,9 @@ class ResumeForm extends React.Component {
                         type="text"
                         className="form-control"
                         id="metier"
+                        name="metier"
                         placeholder="Entrez votre métier"
+                        onChange={handleChange}
                     />
                 </div>
                 <div className="form-group">
@@ -77,6 +131,7 @@ class ResumeForm extends React.Component {
                             name="niveau"
                             value="junior"
                             id="juniorRadio"
+                            onChange={handleChange}
                         />
                         <label className="form-check-label" for="juniorRadio">
                             Junior
@@ -89,6 +144,7 @@ class ResumeForm extends React.Component {
                             name="niveau"
                             value="intermediaire"
                             id="intermediaireRadio"
+                            onChange={handleChange}
                         />
                         <label className="form-check-label" for="intermediaireRadio">
                             Intermédiaire
@@ -101,6 +157,7 @@ class ResumeForm extends React.Component {
                             name="niveau"
                             value="senior"
                             id="seniorRadio"
+                            onChange={handleChange}
                         />
                         <label className="form-check-label" for="seniorRadio">
                             Senior
@@ -113,6 +170,7 @@ class ResumeForm extends React.Component {
                             name="niveau"
                             value="expert"
                             id="expertRadio"
+                            onChange={handleChange}
                         />
                         <label className="form-check-label" for="expertRadio">
                             Expert
@@ -122,7 +180,7 @@ class ResumeForm extends React.Component {
                 <button type="submit" className="btn btn-primary">Generer le CV</button>
             </form>
         );
-    }
+    
 
 
 }
