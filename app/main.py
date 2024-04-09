@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from openai import OpenAI
 import json
+from fastapi.middleware.cors import CORSMiddleware
 #from dotenv import load_dotenv
 #import os
 
@@ -10,12 +11,27 @@ app = FastAPI()
 
 # Définir votre clé d'API OpenAI
 client = OpenAI(
-  api_key=""
+  api_key="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"
+)
+
+# Define allowed origins
+origins = [
+    "http://localhost",
+    "http://localhost:3000",  # Add the specific port if you're using it
+]
+
+# Set up CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "PUT", "DELETE"],
+    allow_headers=["*"],
 )
 
 # Fonction pour générer le CV en utilisant l'API ChatGPT
 def generate_cv_fr(cv_data):
-  name = cv_data["name"]
+  name = cv_data["fullname"]
   experience = cv_data["experience"]
   education = cv_data["education"]
   skills = cv_data["skills"]
@@ -133,8 +149,9 @@ def generate_new_cv(gen_cv, assistant):
       res = msg.content[0].text.value
   return res
 
-@app.post('/generate_cv_json')
-async def generate_cv_json(cv_data:dict):
+
+@app.post("/generate_cv_json/")
+async def generate_cv_json(cv_data: dict):
   gen_cv = generate_cv_fr(cv_data)
   assistant = create_chat_assistant()
   cv_generated = generate_new_cv(gen_cv, assistant)

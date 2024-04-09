@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import AddProfileLink from './AddProfileLink';
 
-export default function AddResumeForm() {
+export default function AddResumeForm({formResults, setFormResults}) {
     const [profileLinks, setProfileLinks] = useState([{profileLink: ""}]);
     const [inputs, setInputs] = useState({
         name: "",
@@ -9,9 +10,17 @@ export default function AddResumeForm() {
         adresse: "",
         email: "",
         telephone: "",
+        education:"",
         metier: "",
         niveau: "",
         profileLinks: [] // Pour stocker les liens de profil dynamiquement ajoutés
+    });
+
+    const [formData, setFormData] = useState({
+        fullname: "", 
+        experience: "",  
+        education: "", 
+        skills: ""
     });
 
     const handleChange = (event) => {
@@ -35,10 +44,39 @@ export default function AddResumeForm() {
         }));
     };*/
 
+   
+// fonction pour appeler l'API pour le CV
+    const request = async() => {
+        try{
+            const response = await axios.post("http://127.0.0.1:8000/generate_cv_json", formData);
+           // console.log(response.data);
+            setFormResults(response.data);
+           
+
+        }catch(error){
+            console.error('Error:', error);
+        }
+
+    };
+
+ 
+// Envoi des données
     const handleSubmit = (event) => {
         event.preventDefault();
         inputs.profileLinks = profileLinks;
-        console.log(JSON.stringify(inputs));
+        setFormData({
+            ...formData, 
+            fullname: inputs.name + ' ' + inputs.prenom, 
+            experience: inputs.niveau,  
+            education: inputs.education, 
+            skills: inputs.metier
+        });
+
+        const formDataJSON = JSON.stringify(formData);
+
+        console.log(formDataJSON);
+        
+        request();
        
     };
     
@@ -51,7 +89,7 @@ export default function AddResumeForm() {
                             type="text"
                             name="name"
                             className="form-control"
-                            id="nom"
+                            id="name"
                             placeholder="Entrez votre nom"
                             onChange={handleChange}
                             required
@@ -110,6 +148,17 @@ export default function AddResumeForm() {
                             onChange={handleProfileLinksChange}
                         />
                     </div>
+                </div>
+                <div className="form-group">
+                    <label for="metier">Dernier Diplôme :</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="education"
+                        name="education"
+                        placeholder="Entrez votre métier"
+                        onChange={handleChange}
+                    />
                 </div>
                 <div className="form-group">
                     <label for="metier">Métier :</label>
@@ -181,6 +230,4 @@ export default function AddResumeForm() {
             </form>
         );
     
-
-
 }
