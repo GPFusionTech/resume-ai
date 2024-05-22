@@ -16,7 +16,7 @@ export default function AddResumeForm({formResults, setFormResults}) {
         profileLinks: [] // Pour stocker les liens de profil dynamiquement ajoutés
     });
 
-    const [formData, setFormData] = useState({
+   const [formData, setFormData] = useState({
         fullname: "", 
         experience: "",  
         education: "", 
@@ -25,14 +25,21 @@ export default function AddResumeForm({formResults, setFormResults}) {
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-        setInputs(prevInputs => ({
-            ...prevInputs,
+        /*setInputs(Inputs => ({
+            ...Inputs,
             [name]: value
-        }));
+        }));*/
+        setInputs({
+            ...inputs,
+            [name]: value
+        });
+
+        //console.log(inputs.name);
     }
 
     const handleProfileLinksChange = (updatedProfileLinks) => {
         setProfileLinks(updatedProfileLinks);
+
     };
 
    /* const handleLinkChange = (index, value) => {
@@ -47,10 +54,35 @@ export default function AddResumeForm({formResults, setFormResults}) {
    
 // fonction pour appeler l'API pour le CV
     const request = async() => {
+        const options ={
+            method: 'POST',
+            url: 'http://127.0.0.1:8000/generate_cv_json',
+            data: formData,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
         try{
-            const response = await axios.post("http://127.0.0.1:8000/generate_cv_json", formData);
+            const response = await axios.request(options);
+            // const response = await axios.post("http://127.0.0.1:8000/generate_cv_json", formData);
            // console.log(response.data);
-            setFormResults(response.data);
+
+            const transJSON = (newData) => {
+                try{
+                    JSON.parse(newData);
+                    setFormResults(newData);
+
+                }catch(error){
+
+                    console.error('La valeur n\'est pas au format JSON valide.');
+
+                }
+            }
+
+            transJSON(response.data);
+
+           //setFormResults(response.data);
+           // setFormResults(response.data);
            
 
         }catch(error){
@@ -64,6 +96,7 @@ export default function AddResumeForm({formResults, setFormResults}) {
     const handleSubmit = (event) => {
         event.preventDefault();
         inputs.profileLinks = profileLinks;
+        
         setFormData({
             ...formData, 
             fullname: inputs.name + ' ' + inputs.prenom, 
@@ -72,9 +105,11 @@ export default function AddResumeForm({formResults, setFormResults}) {
             skills: inputs.metier
         });
 
-        const formDataJSON = JSON.stringify(formData);
+        //console.log(formData.fullname);
 
-        console.log(formDataJSON);
+        //const formDataJSON = JSON.stringify(formData);
+
+        //console.log(formDataJSON);
         
         request();
        
@@ -91,7 +126,8 @@ export default function AddResumeForm({formResults, setFormResults}) {
                             className="form-control"
                             id="name"
                             placeholder="Entrez votre nom"
-                            onChange={handleChange}
+                            value = { inputs.name }
+                            onChange={ handleChange }
                             required
                         />
                     </div>
